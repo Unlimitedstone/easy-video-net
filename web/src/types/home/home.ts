@@ -32,9 +32,30 @@ export interface VideoInfo {
     created_at: string
 }
 
+export interface MovieMessages {
+    id: number;
+    uni_id: string;
+    name: string;
+    image_url: string;
+    image_src: string
+    score: string;
+    type: string;
+    common: string;
+    source: string;
+    create_time: string;
+    update_time: string;
+    introduce: string;
+    alias: string;
+    duration: number;
+    release_date: string;
+    director: string;
+    actor: string;
+    writer: string;
+    country: string;
+    imdb: string;
+}
+
 export type VideoInfoList = Array<VideoInfo>
-
-
 
 export interface GetHomeInfoReq {
     page_info: PageInfo
@@ -43,4 +64,5 @@ export interface GetHomeInfoReq {
 export interface GetHomeInfoRes {
     rotograph: RotographList
     videoList: VideoInfoList
+    movie_messages: Array<MovieMessages>
 }

@@ -6,6 +6,7 @@ import (
 	"github.com/rifflock/lfshook"
 	"github.com/sirupsen/logrus"
 	"io/ioutil"
+	"os"
 	"time"
 )
 
@@ -17,7 +18,7 @@ type JsonInfo struct {
 	Function string `json:"function,omitempty"`
 }
 
-//JsonFormatter 自定义json 解析
+// JsonFormatter 自定义json 解析
 type JsonFormatter struct {
 	logrus.JSONFormatter
 }
@@ -55,6 +56,7 @@ func ReturnsInstance() *logrus.Logger {
 	Logger.SetReportCaller(true)
 	//定义到空输出
 	Logger.SetOutput(ioutil.Discard)
+	Logger.SetOutput(os.Stdout)
 	// 设置 rotate logs,实现文件分割
 	logInfoWriter, _ := rotateLogs.New(
 		logFilePath+"/%Y-%m-%d/info.log",

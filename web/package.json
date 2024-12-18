@@ -24,7 +24,6 @@
     "file-to-array-buffer": "^1.0.0",
     "flv.js": "^1.6.2",
     "highlight.js": "^11.7.0",
-    "node-sass": "^7.0.3",
     "pinia": "^2.0.23",
     "pinia-plugin-persistedstate": "^2.3.0",
     "protobufjs": "^7.1.2",

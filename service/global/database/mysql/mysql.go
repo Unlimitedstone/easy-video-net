@@ -37,7 +37,7 @@ func ReturnsInstance() *gorm.DB {
 		//设置Logger
 		NewMyWriter(),
 		logger.Config{
-			LogLevel: logger.Error,
+			LogLevel: logger.Warn,
 		},
 	)
 	b := retry.NewFibonacci(10 * time.Second)

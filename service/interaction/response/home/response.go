@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-//首页轮播图
+// 首页轮播图
 type rotographInfo struct {
 	Title string `json:"title"`
 	Cover string `json:"cover"`
@@ -17,7 +17,7 @@ type rotographInfo struct {
 }
 type rotographInfoList []rotographInfo
 
-//VideoInfo 首页视频
+// VideoInfo 首页视频
 type VideoInfo struct {
 	ID            uint      `json:"id"`
 	Uid           uint      `json:"uid" `
@@ -33,13 +33,40 @@ type VideoInfo struct {
 	CreatedAt     time.Time `json:"created_at"`
 }
 
+type MovieMessageInfo struct {
+	ID          int64     `json:"id"`
+	UniID       string    `json:"uni_id"`    // 唯一id
+	Name        string    `json:"name"`      // 电影名字
+	ImageURL    string    `json:"image_url"` // 电影url
+	ImageSrc    string    `json:"image_src"` // 本地图片
+	Score       string    `json:"score"`     // 电影评分
+	Type        string    `json:"type"`      // 类型：Move:电影，TV：电视剧，Anime：动漫
+	Common      string    `json:"common"`    // 精选评论
+	Source      string    `json:"source"`
+	CreateTime  time.Time `json:"create_time"`
+	UpdateTime  time.Time `json:"update_time"`
+	Introduce   string    `json:"introduce"`    // 简介
+	Alias       string    `json:"alias"`        // 别名
+	Duration    int32     `json:"duration"`     // 时长（分钟）
+	ReleaseDate string    `json:"release_date"` // 上映日期
+	Director    string    `json:"director"`     // 导演
+	Actor       string    `json:"actor"`        // 主演
+	Writer      string    `json:"writer"`       // 编剧
+	Country     string    `json:"country"`      // 制片国家
+	Imdb        string    `json:"imdb"`         // imdb id
+}
+
 type videoInfoList []VideoInfo
 
 type GetHomeInfoResponse struct {
 	Rotograph rotographInfoList `json:"rotograph"`
 	VideoList videoInfoList     `json:"videoList"`
+	// TODO 外包装
+	MovieMessages []MovieMessageInfo `json:"movie_messages"`
 }
 
+// TODO
+// 重写response
 func (r *GetHomeInfoResponse) Response(rotographList *rotograph.List, videoList *video.VideosContributionList) {
 	//处理轮播图
 	rl := make(rotographInfoList, 0)

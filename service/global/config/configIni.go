@@ -82,7 +82,7 @@ type AliyunOss struct {
 
 func ReturnsInstance() *Info {
 	Config.SqlConfig = &SqlConfigStruct{}
-	cfg, err = ini.Load(filepath.ToSlash("/service/config/config.ini"))
+	cfg, err = ini.Load(filepath.Join("service", "config", "config.ini"))
 	if err != nil {
 		log.Fatalf("配置文件不存在,请检查环境: %v \n", err)
 	}

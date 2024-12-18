@@ -15,7 +15,7 @@ import (
 func init() {
 	LiveSeverTesting()
 	AssetsSeverTesting()
-	FFmpegSeverTesting()
+	//FFmpegSeverTesting()
 }
 
 // LiveSeverTesting 检测直播服务端口
@@ -25,7 +25,7 @@ func LiveSeverTesting() {
 	CheckPortsAsLocalHost(liveConfig.IP, []string{liveConfig.RTMP, liveConfig.FLV, liveConfig.Api, liveConfig.HLS})
 }
 
-//AssetsSeverTesting 运行时静态资源存储目录检测
+// AssetsSeverTesting 运行时静态资源存储目录检测
 func AssetsSeverTesting() {
 	if !location.IsDir("assets") {
 		if err := os.MkdirAll("assets", 0775); err != nil {
@@ -35,7 +35,7 @@ func AssetsSeverTesting() {
 	}
 }
 
-//FFmpegSeverTesting ffmpeg状态检测
+// FFmpegSeverTesting ffmpeg状态检测
 func FFmpegSeverTesting() {
 	cmd := exec.Command("ffmpeg", "-version")
 	if err := cmd.Run(); err != nil {
